@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Object - Basic</title>
+</head>
+<body>
+    <div id="msgContainer"></div>
+    <script>
+        class Person {
+            constructor (firstname, lastname, age){
+                this.firstname = firstname;
+                this.lastname = lastname;
+                this.age = age;
+            }
+
+            introduceYourself(){
+                return `My name is ${this.firstname} ${this.lastname} and I am ${this.age} years old.`;
+            }
+        }
+
+        class Animal {
+            constructor (species, age){
+                this.species = species;
+                this.age = age;
+            }
+
+            introduceYourself(){
+                return `I am a ${this.species} and I am ${this.age} years old.`;
+            }
+        }
+
+        class Car {
+            constructor (brand, age){
+                this.brand = brand;
+                this.age = age;
+            }
+
+            introduceYourself(){
+                return `I am a ${this.brand} and I am ${this.age} years old.`;
+            }
+        }
+
+        let persons = [
+            new Person("John", "Doe", 34),
+            new Person("Peter", "Smith", 22),
+            new Person("Erika", "Applethorn", 19)
+        ];
+
+        let animals = [
+            new Animal("Cat", 4),
+            new Animal("Bird", 2),
+            new Animal("Turtle", 36)
+        ];
+
+        let cars = [
+            new Car("Ford", 12),
+            new Car("Trabant", 37),
+            new Car("Tesla", 2)
+        ];
+
+        let objects = [persons, animals, cars];
+        let output = document.getElementById("msgContainer");
+        for (let elements of objects) {
+            for (let element of elements) {
+                output.innerHTML += `${element.introduceYourself()} <br>`;
+            }
+        }
+    </script>
+</body>
+</html>
