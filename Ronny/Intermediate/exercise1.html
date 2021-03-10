@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Classes - Intermediate</title>
+</head>
+<body>
+    <div id="msgContainer"></div>
+    <script>
+        class Person {
+            constructor (firstname, lastname, age){
+                this.firstname = firstname;
+                this.lastname = lastname;
+                this.age = age;
+            }
+
+            introduceYourself(){
+                return `My name is ${this.firstname} ${this.lastname} and I am ${this.age} years old.`;
+            }
+        }
+
+        class Profession extends Person {
+            constructor(firstname, lastname, age, jobtitle){
+                super(firstname, lastname, age);
+                this.jobtitle = jobtitle;
+            }
+
+            introduceYourself() {
+                return `${super.introduceYourself()} I am a ${this.jobtitle} by the way.`;
+            }
+        }
+
+        class Animal {
+            constructor (species, age){
+                this.species = species;
+                this.age = age;
+            }
+
+            introduceYourself(){
+                return `I am a ${this.species} and I am ${this.age} years old.`;
+            }
+        }
+
+        class Fish extends Animal {
+            constructor (age, watertype){
+                super("fish", age);
+                this.watertype = watertype;
+            }
+
+            introduceYourself(){
+                return `${super.introduceYourself()} You can find me only in ${this.watertype}.`;
+            }
+        }
+
+        class Car {
+            constructor (brand, age){
+                this.brand = brand;
+                this.age = age;
+            }
+
+            introduceYourself(){
+                return `I am a ${this.brand} and I am ${this.age} years old.`;
+            }
+        }
+
+        class Motorbike extends Car {
+            constructor (brand, age) {
+                super(brand, age);
+                this.wheels = 2;
+            }
+            introduceYourself(){
+                return `${super.introduceYourself()} In contrast to my ancestor "${Object.getPrototypeOf(
+                    Object.getPrototypeOf(this)).constructor.name}"" I have ${this.wheels} wheels.`;
+            }
+        }
+
+
+
+        let persons = [
+            new Profession("John", "Doe", 34, "Technican"),
+            new Profession("Peter", "Smith", 22, "Nurse"),
+            new Profession("Erika", "Applethorn", 19, "CEO")
+        ];
+
+        let animals = [
+            new Fish(4, "Salt water"),
+            new Fish(2, "Salt water"),
+            new Fish(36, "Sweet water")
+        ];
+
+        let cars = [
+            new Motorbike("Yamaha", 2),
+            new Motorbike("Suzuki", 5),
+            new Motorbike("Harley Davidson", 12)
+        ];
+
+        let objects = [persons, animals, cars];
+        let output = document.getElementById("msgContainer");
+        for (let elements of objects) {
+            for (let element of elements) {
+                output.innerHTML += `${element.introduceYourself()} <br>`;
+            }
+        }
+    </script>
+</body>
+</html>
