@@ -97,10 +97,11 @@
                                 <p>${hotels[i].address.street} ${hotels[i].address.number}</p>
                                 <p>${hotels[i].address.city}</p>
                                 <p>${hotels[i].address.postalCode}</p>
+                                <p>Nights available: ${hotels[i].numberOfNights}</p>
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="${hotels[i].hotelname} btn btn-primary"></a>
+                            <a href="#" class="${hotels[i].hotelname} btn btn-primary">Reserve me!</a>
                         </div>
                     </div>
                 </div>`
@@ -118,7 +119,7 @@
                 }
             }
         }
-        
+
         document.getElementsByClassName("entrypoint")[0].innerHTML += generateAndFillCards(hotels);
         document.getElementsByClassName("findme")[0].addEventListener("click", checkAvailability);
     
