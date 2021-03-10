@@ -24,7 +24,7 @@
             </a>
             <form class="d-flex">
                 <input class="findme2 form-control me-2" type="search" placeholder="Number of Nights" aria-label="Check Availability">
-                <button class="findme btn btn-outline-success" type="submit">Check Availability</button>
+                <input class="findme btn btn-outline-success" type="button" value="Check Availability"></input>
               </form>
             <button class="navbar-toggler icon-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -73,7 +73,7 @@
             }
         }
 
-        let hotels = [
+        const hotels = [
             new Hotel("La Paz", getRandomNights(), new Address("Bolivia", "Camino Rojo", 12, "La Paz", "1234"), "img/lapaz.jpg"),
             new Hotel("Azure", getRandomNights(), new Address("Italy", "Strada Rossa", 123, "Azurro", "99125"), "img/azure.jpg"),
             new Hotel("Heaven", getRandomNights(), new Address("Maledives", "Street No.", 1, "An Island", "DX012"), "img/heaven.jpg"),
@@ -114,15 +114,12 @@
             for (let hotel of hotels) {
                 if (hotel.numberOfNights < desiredNights) {
                     document.getElementsByClassName(hotel.hotelname)[0].innerHTML = `Sorry, no available nights for ${hotel.hotelname}`;
-                } else {
-                    document.getElementsByClassName(hotel.hotelname)[0].innerHTML = `Reserve me!`;
-                }
+                } 
             }
         }
 
         document.getElementsByClassName("entrypoint")[0].innerHTML += generateAndFillCards(hotels);
-        document.getElementsByClassName("findme")[0].addEventListener("click", checkAvailability);
-    
+        document.getElementsByClassName("findme")[0].addEventListener("click", checkAvailability);  
     </script>
 </body>
 </html>
